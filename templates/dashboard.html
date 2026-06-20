@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Threat Intelligence Dashboard</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #111827;
+            color: white;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #38bdf8;
+        }
+
+        .cards {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: #1f2937;
+            padding: 20px;
+            border-radius: 10px;
+            width: 180px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1f2937;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #374151;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0f172a;
+        }
+
+        .HIGH {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .MEDIUM {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+
+        .LOW {
+            color: #22c55e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Threat Intelligence Dashboard</h1>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Total IPs</h3>
+            <p>{{ total_ips }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Attempts</h3>
+            <p>{{ total_attempts }}</p>
+        </div>
+
+        <div class="card">
+            <h3>High Risk</h3>
+            <p>{{ high_risk }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Medium Risk</h3>
+            <p>{{ medium_risk }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Low Risk</h3>
+            <p>{{ low_risk }}</p>
+        </div>
+    </div>
+
+    <h2>Threat Details</h2>
+
+    <table>
+        <tr>
+            <th>IP Address</th>
+            <th>Failed Attempts</th>
+            <th>Risk Level</th>
+            <th>Country</th>
+        </tr>
+
+        {% for threat in threats %}
+        <tr>
+            <td>{{ threat["IP Address"] }}</td>
+            <td>{{ threat["Failed Attempts"] }}</td>
+            <td class="{{ threat['Risk Level'] }}">{{ threat["Risk Level"] }}</td>
+            <td>{{ threat["Country"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
