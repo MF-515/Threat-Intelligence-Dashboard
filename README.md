@@ -1,7 +1,7 @@
 # Threat Intelligence Dashboard
 
 <p align="center">
-  <img src="screenshots/dashboard.png" width="900">
+  <img src="dashboard.png" width="900">
 </p>
 
 ## Overview
